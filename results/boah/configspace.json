@@ -1,0 +1,54 @@
+{
+  "name": null,
+  "hyperparameters": [
+    {
+      "type": "categorical",
+      "name": "filter_type",
+      "choices": [
+        "threshold_cutoff",
+        "percentile_cutoff",
+        "none"
+      ],
+      "weights": null,
+      "default_value": "threshold_cutoff",
+      "meta": null
+    },
+    {
+      "type": "categorical",
+      "name": "generator_type",
+      "choices": [
+        "openai",
+        "ollama"
+      ],
+      "weights": null,
+      "default_value": "openai",
+      "meta": null
+    },
+    {
+      "type": "categorical",
+      "name": "prompt_type",
+      "choices": [
+        "fstring",
+        "long_text_reorder"
+      ],
+      "weights": null,
+      "default_value": "fstring",
+      "meta": null
+    },
+    {
+      "type": "categorical",
+      "name": "retrieval_type",
+      "choices": [
+        "chroma",
+        "bm25"
+      ],
+      "weights": null,
+      "default_value": "chroma",
+      "meta": null
+    }
+  ],
+  "conditions": [],
+  "forbiddens": [],
+  "python_module_version": "1.2.0",
+  "format_version": 0.4
+}

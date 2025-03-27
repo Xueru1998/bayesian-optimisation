@@ -1,0 +1,11 @@
+retrieval_type,filter_type,prompt_type,generator_type,total_time,trial_number
+chroma,percentile_cutoff,long_text_reorder,ollama,12.75964617729187,0
+chroma,none,long_text_reorder,openai,7.1457836627960205,1
+bm25,threshold_cutoff,fstring,ollama,51.85685610771179,2
+bm25,none,fstring,openai,5.376530170440674,3
+chroma,threshold_cutoff,long_text_reorder,ollama,31.337213277816772,4
+bm25,threshold_cutoff,long_text_reorder,ollama,33.41280221939087,5
+chroma,none,fstring,openai,6.125338077545166,6
+bm25,none,long_text_reorder,openai,7.359280109405518,7
+chroma,percentile_cutoff,long_text_reorder,openai,7.500349044799805,8
+bm25,percentile_cutoff,long_text_reorder,openai,6.866955041885376,9

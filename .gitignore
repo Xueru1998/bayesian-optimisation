@@ -1,0 +1,5 @@
+.env
+data-ingestion-local/
+__pycache__
+boah-env/
+get-pip.py

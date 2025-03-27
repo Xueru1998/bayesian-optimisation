@@ -1,0 +1,52 @@
+#not used now! only put here for reference
+vectordb:
+  - name: default
+    type: chroma
+    persist_directory: data-ingestion-local
+    embedding_model: all-MiniLM-L6-v2
+
+node_lines:
+  - node_line_name: document_processing_line
+    nodes:
+      - node_type: document_loader
+        modules:
+          - module_type: pdf_loader
+            extract_images: false
+            
+      - node_type: text_splitter
+        modules:
+          - module_type: recursive_character_splitter
+            chunk_size: 1000
+            chunk_overlap: 50
+            
+      - node_type: embedding
+        modules:
+          - module_type: huggingface_embeddings
+            model_name: all-MiniLM-L6-v2
+            
+  - node_line_name: retrieval_line
+    nodes:
+      - node_type: retrieval
+        top_k: 3
+        modules:
+          - module_type: vectordb
+            vectordb: default
+            search_type: similarity
+            
+  - node_line_name: generation_line
+    nodes:
+      - node_type: prompt_maker
+        modules:
+          - module_type: chat_template
+            system_template: "As a Legal Assistant Chatbot specializing in legal queries, your primary objective is to provide accurate and concise information based on user queries. You will adhere strictly to the instructions provided, offering relevant context from the knowledge base while avoiding unnecessary details. Your responses will be brief, to the point, concise and in compliance with the established format. If a question falls outside the given context, you will simply output that you are sorry and you don't know about this. The aim is to deliver professional, precise, and contextually relevant information pertaining to the context. Use four sentences maximum.\nCONTEXT: {context}"
+            
+      - node_type: rephraser
+        modules:
+          - module_type: history_aware_reformulator
+            model: llama-3.1-8b-instant
+            
+      - node_type: generator
+        modules:
+          - module_type: groq_llm
+            llm: llama-3.1-8b-instant
+            temperature: 0.15

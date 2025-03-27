@@ -1,0 +1,2 @@
+retrieval_type,filter_type,prompt_type,generator_type,total_time
+bm25,none,fstring,openai,3.1247246265411377
